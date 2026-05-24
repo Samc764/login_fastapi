@@ -5,10 +5,9 @@ from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
 
-# Esto calcula la ruta de la carpeta templates subiendo un nivel desde la carpeta 'api'
-base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-templates = Jinja2Templates(directory=os.path.join(base_dir, "templates"))
-# 1. Ruta de inicio (GET): Muestra el formulario
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "templates"))
+
 @app.get("/", response_class=HTMLResponse)
 async def mostrar_formulario(request: Request, error: str = None):
     # Corrección aquí también para usar 'context' de forma segura

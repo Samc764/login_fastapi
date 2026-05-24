@@ -1,5 +1,15 @@
 {
-  "src": "api/index.py",
-  "use": "@vercel/python",
-  "config": { "maxDuration": 15 }
+  "builds": [
+    {
+      "src": "api/main.py",
+      "use": "@vercel/python",
+      "config": { "maxDuration": 15 }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "api/main.py"
+    }
+  ]
 }
